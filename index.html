@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MVVM</title>
+</head>
+<body>
+
+    <div id="app">
+        <input type="text" v-model="school.name">
+        <div>{{school.age}}</div>
+        {{getNewName}}
+        <ul>
+            <li>1</li>
+        </ul>
+        <button v-on:click="change">改變值</button>
+        <div v-html="message"></div>
+    </div>
+
+    <script src="mvvm.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                school: {
+                    name: '文藻',
+                    age: 50
+                },
+                message: '<h1>歡迎大家</h1>'
+            },
+            computed: {
+                getNewName () {
+                    return this.school.name + ' 這是一個 computed 屬性'
+                }
+            },
+            methods: {
+                change () {
+                    this.school.name = '函數 change 調用'
+                }
+            }
+        })
+    </script>
+</body>
+</html>
